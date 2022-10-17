@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const jokeResponse = [
+const jokeResponse: any = [
   {
     id: 117,
     type: "general",
@@ -20,9 +20,9 @@ function printGeneralJoke() {
   fetch("https://jokestemp.neillbogie.repl.co/jokes/general/random")
     .then((response) => response.json())
     .then((jsonBody) => {
-      // console.log(jsonBody) /* de-comment to troubleshoot */
+      console.log(jsonBody) /* de-comment to troubleshoot */
       /** TS doesn't know that jsonBody is an array */
-      console.log(jsonBody.setup, jsonBody.punchline);
+      console.log(jsonBody[0].setup, jsonBody[0].punchline);
     });
 }
 
@@ -31,11 +31,11 @@ async function printProgrammingJoke() {
     "https://jokestemp.neillbogie.repl.co/jokes/programming/random"
   );
   const jsonBody = await response.json();
-  // console.log(jsonBody) /* de-comment to troubleshoot */
+  console.log(jsonBody) /* de-comment to troubleshoot */
   /** TS doesn't know that jsonBody is an array */
-  console.log(jsonBody.setup, jsonBody.punchline);
+  console.log(jsonBody[0].setup, jsonBody[0].punchline);
 }
 
-printExampleJoke();
-// printGeneralJoke();
+// printExampleJoke();
+printGeneralJoke();
 // printProgrammingJoke();
